@@ -1,0 +1,31 @@
+// Conexão com WEB
+
+private List<String>downloadString(String enderecoWeb){
+        final int SEGUNDOS = 1000;
+        try {
+            URL url = new URL(enderecoWeb);
+            HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
+            conexao.setReadTimeout(10 * SEGUNDOS);
+            conexao.setConnectTimeout(15 * SEGUNDOS);
+            conexao.setRequestMethod("GET");
+            conexao.setDoInput(true);
+            conexao.setDoOutput(false);
+            conexao.connect();
+
+            int resposta = conexao.getResponseCode();
+            if(resposta == HttpURLConnection.HTTP_OK){
+                InputStream is = conexao.getInputStream();
+
+                List<String> strings = new ArrayList<String>();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+                String s = null;
+                while ((s = reader.readLine()) != null){
+                    strings.add(s);
+                }
+                return strings;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }

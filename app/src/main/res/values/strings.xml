@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Mobile Grupo</string>
+
+    <string name="rotulo_agricase">AGRICASE</string>
+    <string name="rotulo_disma">DISMA</string>
+    <string name="rotulo_equagril">EQUAGRIL</string>
+    <string name="rotulo_grupo_shark">GRUPO SHARK</string>
+    <string name="rotulo_mult_rental">MULT RENTAL</string>
+    <string name="rotulo_new_holland">NOVA HOLANDA</string>
+    <string name="rotulo_shark_distribuidora">SHARK DISTRIBUIDORA</string>
+    <string name="rotulo_shark_maquinas">SHARK MAQUINAS</string>
+    <string name="rotulo_shark_tratores">SHARK TRATORES</string>
+    <string name="rotulo_login">LOGIN</string>
+    <string name="btn_entrar">ENTRAR</string>
+    <string name="hint_senha">Senha</string>
+    <string name="hint_usuario">Usuario</string>
+
+</resources>
