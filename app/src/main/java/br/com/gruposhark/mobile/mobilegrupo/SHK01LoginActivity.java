@@ -1,5 +1,6 @@
 package br.com.gruposhark.mobile.mobilegrupo;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,15 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
-import model.Modelo;
+import model.Celular;
+
+import model.Usuario;
+import model.WebService;
 import util.Converte;
 
 public class SHK01LoginActivity extends AppCompatActivity {
@@ -27,10 +25,10 @@ public class SHK01LoginActivity extends AppCompatActivity {
     Button buttonSHK01Entrar;
     ProgressBar progressBarSHK01;
 
-    ArrayList<Modelo> varCelular;
-    Modelo usuario;
-    ArrayList<Modelo>varUsuario;
-
+    ArrayList<Celular> varCelular;
+    Usuario usuario;
+    ArrayList<Usuario>varUsuario;
+    WebService service;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +44,9 @@ public class SHK01LoginActivity extends AppCompatActivity {
         Intent it = getIntent();
         varCelular = it.getParcelableArrayListExtra("CELULAR"); // Contém dados do celular
 
-        usuario = new Modelo();
-        varUsuario = new ArrayList<Modelo>();
-
+        usuario = new Usuario();
+        varUsuario = new ArrayList<Usuario>();
+        service = new WebService();
     }
 
     public void menu_onClick(View view){
@@ -58,8 +56,13 @@ public class SHK01LoginActivity extends AppCompatActivity {
         try {
             String usuario = editTextSHK01Login.getText().toString();
             String senha = converteSenha.convertPasswordToMD5(editTextSHK01Senha.getText().toString());
-            varCelular.get(0).getCpo01();
+            String imei = varCelular.get(0).getImei();
+
+            service.execute(usuario, senha, imei);
+
             progressBarSHK01.setVisibility(View.VISIBLE);
+
+
         }catch (Exception e){
             Class c = e.getClass();
             String respErro = c.getName();

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
@@ -13,14 +14,15 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import model.Celular;
 import model.Modelo;
 
 public class SHK00MainActivity extends AppCompatActivity{
 
-    Modelo celular;
+    Celular celular;
     //Celular celular;
     //ArrayList<Celular> celulars;
-    ArrayList<Modelo>varCelular;
+    ArrayList<Celular>varCelular;
 
 
     //private static final int PERMISSION_READ_STATE = 0;
@@ -69,9 +71,9 @@ public class SHK00MainActivity extends AppCompatActivity{
 
         TelephonyManager telephonyManager = (TelephonyManager)
                 getSystemService(Context.TELEPHONY_SERVICE);
-        varCelular = new ArrayList<Modelo>();
+        varCelular = new ArrayList<Celular>();
 
-        celular = new Modelo(
+        celular = new Celular(
                 telephonyManager.getDeviceId(),
                 telephonyManager.getSimSerialNumber()
         );

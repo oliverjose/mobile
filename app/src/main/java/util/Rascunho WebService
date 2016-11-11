@@ -1,20 +1,3 @@
-package model;
-
-import android.content.Context;
-import android.os.AsyncTask;
-import android.util.Log;
-
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.transport.HttpTransportSE;
-
-import java.util.ArrayList;
-
-import util.SoapSerEnv;
-
-/**
- * Created by jose.oliveira on 10/11/2016.
- */
 
 public class WebService extends AsyncTask<String, Object, String> {
 
@@ -34,39 +17,44 @@ public class WebService extends AsyncTask<String, Object, String> {
     private HttpTransportSE androidHttpTransport = null;
     boolean erro = false;
 
-    public WebService() {
+    private Context context;
+
+    public WebService(Context context, String conexao, String metodo ){
+
+    }
+
+    public WebService(Context context, String conexao, String grupo, String metodo ){
+
+    }
+
+    public WebService(Context context, String usuario, String senha, String imei, String metodo){
+
+    }
+
+
+
+    public WebService(Context context, String conexao, String lote, String grupo, String libRej, String metodo ){
 
     }
 
     @Override
     protected String doInBackground(String... params) {
-        Log.e("SHK01LoginActivity/WebService -> ", "doInBackground");
-
-
-        try {
-            getSMOBA01000(params[0], params[1], params[2]);
-            //Atualiza a interface através do onProgressUpdate
-        } catch (Exception e) {
-            e.printStackTrace();
-            //enviarErro(respErro);
-        }
-        return null; //
-
+        getSMOBA01000(params[0], params[1], params[2]);
+        return null;
     }
+
     @Override
     protected void onPreExecute() {
-        Log.e("SHK01LoginActivity/WebService -> ", "onPreExecute");
-
-        //Context contexto = getApplicationContext();
-
+        super.onPreExecute();
     }
 
     @Override
-    protected void onPostExecute(String strings) {
-        Log.e("SHK01LoginActivity/WebService -> ", "onPostExecute");
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
     }
 
-    private void getSMOBA01000(String _usuario, String _senha, String _imei){
+    public void getSMOBA01000(String _usuario, String _senha, String _imei){
+
         Log.e("SHK01LoginActivity/WebService -> ", "getSMOBA01000");
 
         request = new SoapObject(NAMESPACE, METHOD);
@@ -99,27 +87,42 @@ public class WebService extends AsyncTask<String, Object, String> {
                 Log.d("CONEXAO_WS_EFETUADA: ", response.toString());
                 libera.getProperty(i).toString();
 
-                libera.getProperty(2).toString(); // IdUser 2
-                libera.getProperty(3).toString(); // Login 3
-                libera.getProperty(4).toString();  // Nome 4
-                libera.getProperty(1).toString();  // Email 1
-                libera.getProperty(5).toString();  // Tema 5
-                libera.getProperty(0).toString();  // Conexao 0
+                usuario = new Usuario(
+                        libera.getProperty(2).toString(), // IdUser 2
+                        libera.getProperty(3).toString(), // Login 3
+                        libera.getProperty(4).toString(), // Nome 4
+                        libera.getProperty(1).toString(), // Email 1
+                        libera.getProperty(5).toString(), // Tema 5
+                        libera.getProperty(0).toString()  // Conexao 0
+                );
+                usuarios.add(usuario);
             }
             Log.v("DADOS_WS_CAPTURADO ", response.toString());
         }
         catch(Exception e){
             Log.e("SHK01LoginActivity/WebService -> ", "Error on soapObjectData() " + e.getMessage());
             if(envelope.bodyIn != null){
-
+                respErro = envelope.bodyIn.toString();
             }else {
                 Class c = e.getClass();
+                respErro = c.getName();
             }
             erro = true;//1
 
         }
         // 2
+
+    }
+
+    public void getSMOBA02000(){
+
+    }
+
+    public void getSMOBA03000(){
+
+    }
+
+    public void getSMOBA04000(){
+
     }
 }
-
-
