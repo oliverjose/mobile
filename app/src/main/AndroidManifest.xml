@@ -20,7 +20,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".SHK99ErroActivity" />
-        <activity android:name=".SHK01LoginActivity"></activity>
+        <activity android:name=".SHK01LoginActivity" />
+        <activity android:name=".SHK98ServicoActivity" />
+        <activity android:name=".SHK02MenuActivity"></activity>
     </application>
 
 </manifest>

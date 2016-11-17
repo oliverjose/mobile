@@ -12,7 +12,9 @@
     <string name="rotulo_shark_tratores">SHARK TRATORES</string>
     <string name="rotulo_login">LOGIN</string>
     <string name="btn_entrar">ENTRAR</string>
-    <string name="hint_senha">Senha</string>
-    <string name="hint_usuario">Usuario</string>
+    <string name="hint_usuario">Usuário</string>
+    <string name="int_senha">senha</string>
+    <string name="txv_rotulo_shk98_servico">Serviço</string>
+
 
 </resources>

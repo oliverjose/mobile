@@ -15,7 +15,7 @@ import android.os.Parcelable;
  * Created by jose.oliveira on 11/11/2016.
  */
 
-public class Usuario extends Celular implements Parcelable{
+public class Usuario implements Parcelable{
 
     private String idUser;
     private String login;

@@ -30,8 +30,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/editTextSHK01Login"
         android:layout_marginTop="50dp"
-        android:hint="@string/hint_usuario"
-        android:text="@string/hint_usuario" />
+        android:inputType=""
+        android:hint="@string/hint_usuario" />
 
     <EditText
         android:layout_width="match_parent"
@@ -40,8 +40,7 @@
         android:ems="10"
         android:id="@+id/editTextSHK01Senha"
         android:layout_marginTop="10dp"
-        android:hint="@string/hint_senha"
-        android:text="@string/hint_senha" />
+        android:hint="@string/int_senha" />
 
     <Button
         android:layout_width="match_parent"
