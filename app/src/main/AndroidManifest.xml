@@ -22,7 +22,8 @@
         <activity android:name=".SHK99ErroActivity" />
         <activity android:name=".SHK01LoginActivity" />
         <activity android:name=".SHK98ServicoActivity" />
-        <activity android:name=".SHK02MenuActivity"></activity>
+        <activity android:name=".SHK02MenuActivity" />
+        <activity android:name=".SHK03MenuResumoActivity"></activity>
     </application>
 
 </manifest>

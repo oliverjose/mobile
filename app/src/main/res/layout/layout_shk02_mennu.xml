@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2016. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  ~ Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+  ~ Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+  ~ Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+  ~ Vestibulum commodo. Ut rhoncus gravida arcu.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:orientation="vertical"
+    android:id="@+id/linearLayoutMenu"
+    android:layout_marginLeft="50dp"
+    android:layout_marginRight="50dp"
+    android:paddingLeft="50dp"
+    android:paddingRight="50dp"
+    android:elevation="15dp"
+    android:baselineAligned="true">
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewMenu"
+        android:elevation="24dp"
+        tools:ignore="HardcodedText,UnusedAttribute"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:fontFamily="serif"
+        android:typeface="sans"
+        android:lineSpacingExtra="10sp"
+        android:textColor="?attr/actionMenuTextColor"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:textColorLink="@android:color/transparent"
+        android:textSize="15sp"
+        android:textStyle="normal|bold"
+        style="@android:style/Widget.DeviceDefault.Light.TabWidget"
+        android:gravity="center_horizontal" />
+</LinearLayout>

@@ -14,7 +14,8 @@
     <string name="btn_entrar">ENTRAR</string>
     <string name="hint_usuario">Usuário</string>
     <string name="int_senha">senha</string>
-    <string name="txv_rotulo_shk98_servico">Serviço</string>
+    <string name="txv_rotulo_shk98_servico">Iniciando...</string>
+    <string name="buttonSHK02CPO04">Button</string>
 
 
 </resources>

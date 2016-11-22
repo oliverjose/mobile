@@ -18,6 +18,7 @@ import org.ksoap2.transport.HttpTransportSE;
 import java.util.ArrayList;
 
 import model.Celular;
+import model.Mennu;
 import model.Usuario;
 import util.SoapSerEnv;
 
@@ -42,6 +43,8 @@ public class SHK98ServicoActivity extends AppCompatActivity {
     private String _conexao;
 
     Usuario usuario;
+    Mennu mennu;
+    ArrayList<Mennu>mennus;
     ArrayList<Usuario> varUsuario;
     ArrayList<Celular> varCelular;
     WebService ws;
@@ -53,9 +56,10 @@ public class SHK98ServicoActivity extends AppCompatActivity {
 
         textViewSHK98Servico = (TextView) findViewById(R.id.textViewSHK98Servico);
         progressBarSHK98Servico = (ProgressBar) findViewById(R.id.progressBarSHK98Servico);
-        progressBarSHK98Servico.setVisibility(View.GONE);
+        //progressBarSHK98Servico.setVisibility(View.GONE);
 
         ws = new WebService();
+        mennus = new ArrayList<Mennu>();
 
         Intent itSHK98 = getIntent();
         shk = itSHK98.getIntExtra("SHK", 0);
@@ -69,6 +73,9 @@ public class SHK98ServicoActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        progressBarSHK98Servico.setVisibility(View.GONE);
+
         switch (shk){
             case 100:
                 shk98Servico("10.1.17.100", "8013", "WSMOBILE01000", "SMOBA01001");
@@ -164,15 +171,23 @@ public class SHK98ServicoActivity extends AppCompatActivity {
                     Log.e("SHK98Serviço -> ", "onPostExecute");
                     textViewSHK98Servico.setText("Conexão Efetuada...");
 
-                    Intent intentSHK01 = new Intent(SHK98ServicoActivity.this, SHK02MenuActivity.class);
-                    intentSHK01.putParcelableArrayListExtra("USUARIO", varUsuario);
-                    intentSHK01.putParcelableArrayListExtra("CELULAR", varCelular);
+                    Intent intentSHK01 = new Intent(SHK98ServicoActivity.this, SHK98ServicoActivity.class);
+
+                    intentSHK01.putExtra("SHK", 200);
+                    intentSHK01.putExtra("CONEXAO", varUsuario.get(0).getConexao());
                     startActivity(intentSHK01);
                     finish();
                     break;
                 case 200:
                     textViewSHK98Servico.setText("Menu atualizado...");
                     progressBarSHK98Servico.setVisibility(View.GONE);
+                    Intent intentSHK02 = new Intent(SHK98ServicoActivity.this, SHK02MenuActivity.class);
+                    intentSHK02.putExtra("SHK", 200);
+                    intentSHK02.putParcelableArrayListExtra("CELULAR", varCelular);
+                    intentSHK02.putParcelableArrayListExtra("USUARIO", varUsuario);
+                    intentSHK02.putParcelableArrayListExtra("MENNU", mennus);
+                    startActivity(intentSHK02);
+                    finish();
                     break;
             }
 
@@ -253,6 +268,7 @@ public class SHK98ServicoActivity extends AppCompatActivity {
         public void getSMOBA02000(String _conexao){
             Log.e("SHK02MenuActivity -> ", "getIdentificadorSMOBA02000");
 
+
             request = new SoapObject(NAMESPACE, METHOD);
             envelope = new SoapSerEnv(SoapEnvelope.VER11);
             androidHttpTransport = new HttpTransportSE(URL);
@@ -279,13 +295,15 @@ public class SHK98ServicoActivity extends AppCompatActivity {
                     Log.d("CONEXAO_WS_EFETUADA: ", response.toString());
                     libera.getProperty(i).toString();
 
-                    libera.getProperty(0).toString(); // LIBERA
-                    libera.getProperty(1).toString(); // LIBERACAO
-                    libera.getProperty(2).toString(); // DEVVENDA
-                    libera.getProperty(3).toString(); // DEV. VENDA
-                    libera.getProperty(4).toString(); // 1
-                    libera.getProperty(5).toString(); // 0
-
+                    mennu = new Mennu(
+                    libera.getProperty(0).toString(), // LIBERA
+                    libera.getProperty(1).toString(), // LIBERACAO
+                    libera.getProperty(2).toString(), // DEVVENDA
+                    libera.getProperty(3).toString(), // DEV. VENDA
+                    libera.getProperty(4).toString(), // 1
+                    libera.getProperty(5).toString() // 0
+                    );
+                    mennus.add(mennu);
                 }
                 Log.v("DADOS_WS_CAPTURADO ", response.toString());
             }

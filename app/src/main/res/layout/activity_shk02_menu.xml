@@ -7,15 +7,88 @@
   ~ Vestibulum commodo. Ut rhoncus gravida arcu.
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_shk02_menu"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="br.com.gruposhark.mobile.mobilegrupo.SHK02MenuActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="#ffffff">
 
-</RelativeLayout>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:background="#ffffff"
+        tools:ignore="RtlHardcoded">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/textViewSHK02GrupoShark"
+            android:layout_row="0"
+            android:layout_column="4"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:textColor="#57595a"
+            android:textSize="15dp"
+            tools:ignore="SpUsage" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewSHK02Grupo"
+            android:layout_row="1"
+            android:layout_column="2"
+            android:contentDescription=""
+            tools:ignore="ContentDescription" />
+
+    </GridLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/textViewSHK02Menu"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="20"
+        android:background="#ffffff"
+        tools:ignore="InefficientWeight">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listViewSHK02Menu"
+            android:background="#ffffff"
+            android:clickable="false"
+            android:elevation="24dp"
+            style="@style/Widget.AppCompat.ListView.Menu"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:listSelector="?android:attr/colorButtonNormal"
+            android:longClickable="true"
+            android:minHeight="250dp"
+            android:textAlignment="gravity"
+            android:textDirection="locale"
+            android:textFilterEnabled="true"
+            android:touchscreenBlocksFocus="true" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBarSHK02"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone" />
+
+
+</LinearLayout>

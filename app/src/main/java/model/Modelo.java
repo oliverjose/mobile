@@ -10,7 +10,7 @@ import android.os.Parcelable;
 public class Modelo implements Parcelable {
 
     private long id;
-    private String cpo01;
+    private String cpo01; // cliente / ff
     private String cpo02;
     private String cpo03;
     private String cpo04;
